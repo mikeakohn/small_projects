@@ -4,7 +4,7 @@
 ;; https://www.mikekohn.net/
 ;; mike@mikekohn.net
 ;;
-;; Control an R/C car with an Xbee Pro module.
+;; Control an R/C car with an Xbee Pro module. Microcontroller MSP430G2553.
 
 .include "msp430x2xx.inc"
 
@@ -240,7 +240,6 @@ direction_table:
   db 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
   db 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
 
-
   org 0xffe8
 vectors:
   dw 0
@@ -255,6 +254,4 @@ vectors:
   dw 0
   dw 0
   dw start                 ; Reset
-
-
 
