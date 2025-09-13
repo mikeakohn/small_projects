@@ -1,0 +1,23 @@
+
+
+NET "leds<0>" LOC = "j14";
+NET "leds<1>" LOC = "j15";
+NET "leds<2>" LOC = "k15";
+NET "leds<3>" LOC = "k14";
+NET "leds<4>" LOC = "e17";
+NET "leds<5>" LOC = "p15";
+NET "leds<6>" LOC = "f4";
+NET "leds<7>" LOC = "r4";
+
+NET "lclk" LOC = "B8";
+
+NET "btns<0>" LOC = "b18";
+NET "btns<1>" LOC = "d18";
+NET "btns<2>" LOC = "e18";
+NET "btns<3>" LOC = "h13";
+
+NET "tx" LOC = "P9";
+NET "rx" LOC = "U6";
+
+
+
