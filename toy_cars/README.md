@@ -6,4 +6,6 @@ electronics and replaced with other electronics:
 
 https://www.mikekohn.net/micro/mini_cooper_xbee.php
 https://www.mikekohn.net/micro/ir_toy_car.php
+https://www.mikekohn.net/micro/ir_toy_car_dspic.php
+https://www.mikekohn.net/micro/bluetooth_toy_car.php
 
