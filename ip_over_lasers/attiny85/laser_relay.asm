@@ -2,7 +2,7 @@
 ;; Email: mike@mikekohn.net
 ;;   Web: https://www.mikekohn.net/
 ;;
-;; Interface 2 UARTs together with a laser / IR transistor.
+;; Interface 2 UARTs together with a laser / phototransistor.
 
 .include "tn85def.inc"
 .avr8
