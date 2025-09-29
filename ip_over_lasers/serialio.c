@@ -29,7 +29,7 @@ int serial_open(char *device)
   tcgetattr(fd, &oldtio);
 
   memset(&newtio, 0, sizeof(struct termios));
-  newtio.c_cflag = B1200|CS8|CLOCAL|CREAD;
+  newtio.c_cflag = B2400|CS8|CLOCAL|CREAD;
   newtio.c_iflag = IGNPAR;
   newtio.c_oflag = 0;
   newtio.c_lflag = 0;
