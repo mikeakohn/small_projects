@@ -1,12 +1,12 @@
-;; paper_rom - Copyright 2013 by Michael Kohn
+;; Edible MIDI Keyboard - Copyright 2025 by Michael Kohn
 ;; Email: mike@mikekohn.net
 ;;   Web: http://www.mikekohn.net/
 ;;
-;; Read data from a disk of paper with black marks of different thickness.
+;; Trigger note-on / note-off events over a UART based on
+;; buttons (keys) being pushed on the input pins of an ATtiny2313.
 
 .avr8
 .include "tn2313def.inc"
-;.device ATtiny2313
 
 ; 8MHz clock
 ; note: CLKSEL 0100
