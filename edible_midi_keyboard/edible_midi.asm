@@ -1,6 +1,6 @@
 ;; Edible MIDI Keyboard - Copyright 2025 by Michael Kohn
 ;; Email: mike@mikekohn.net
-;;   Web: http://www.mikekohn.net/
+;;   Web: https://www.mikekohn.net/
 ;;
 ;; Trigger note-on / note-off events over a UART based on
 ;; buttons (keys) being pushed on the input pins of an ATtiny2313.
