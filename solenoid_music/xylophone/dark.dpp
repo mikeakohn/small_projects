@@ -1,0 +1,130 @@
+include "drum_defines.inc"
+
+set bpm = 110;
+set default_volume = 127;
+set time_signature = 4/4;
+
+pattern click_track
+{
+  closed_hihat: 1 2 3 4;
+}
+
+pattern intro
+{
+  closed_hihat:  1 2 3 4;
+  snare:         1;
+  crash_cymbal1: 1;
+}
+
+pattern main_1
+{
+  bassdrum:     1   3 3.5;
+  snare:          2       4;
+  closed_hihat: 1 2 3     4;
+}
+
+pattern main_2
+{
+  bassdrum:     1     3     4;
+  snare:           2    3.5   4.5;
+  closed_hihat: 1  2  3       4;
+}
+
+pattern main_3
+{
+  bassdrum:     1         3       4;
+  snare:           2  2.5    3.5  4.5;
+  closed_hihat: 1  2      3       4;
+}
+
+pattern half_click
+{
+  bassdrum:     1;
+  snare:           2;
+  closed_hihat: 1  2  3  4;
+}
+
+section start
+{
+  play: click_track, intro;
+}
+
+section intro_synth
+{
+  play: 3 main_1, main_2, 3 main_1, half_click;
+}
+
+section drum_verse
+{
+  play: 3 main_1, 1 main_2;
+}
+
+section drum_chorus
+{
+  play: 5 main_3;
+}
+
+phrase phrase_blank
+{
+  set midi_channel = 1;
+
+  voice: 4 R, 4 R, 4 R, 4 R;
+}
+
+phrase synth
+{
+  set midi_channel = 1;
+
+  voice: 8 R, 8 A4, 8 C5, 8 E5,
+              8 E4, 8 A4, 8 C5,
+         8 G4, 8 C5, 8 G4, 8 C5, 8 G4, 8 C5, 8 G4, 8 C5, 8 G4;
+}
+
+phrase synth_verse
+{
+  set midi_channel = 1;
+
+  voice: 8 R, 8 A4, 8 C5, 8 E5,
+              8 E4, 8 A4, 8 C5,
+         8 G4, H R;
+}
+
+phrase verse
+{
+  set midi_channel = 1;
+
+  voice:
+   // When there's lightning.
+   4 A4, 4 B4, 4 C5, 4 A4, H R,
+   // You know it always brings me down.
+   8 R, 8 A4, 8 A4, 8 B4, 8 C5., 16 B4, 8 A4, 4 G4,
+   4 E4., H R,
+   H R, 8 R,
+   // Cause it's free
+   8 A4, 8 B4, 4 C5,
+   8 A4, 8 B4, 4 C5,
+   8 A4, 8 B4, H C5,
+   8 B4, 8 D5, 4 C5,
+   16 B4, 16 C5, 4 B4,
+   H A4,
+   Q R, H R;
+}
+
+phrase chorus
+{
+  voice:
+    Q R,
+    H R, 4 B4, 8 B4, 8 A4,  8 B4,   4 C5, 4 B4,  4 A4, H C5, 8 R,
+         4 B4, 8 B4, 8 A4,  8 G4,   W A4, Q R,   8 R,
+         8 B4, 8 B4, 8 B4,  8 A4,   8 G4, 4 A4.,
+         8 A4, 8 B4, 8 C5., 8 B4., 16 A4, 16 G4, 2 A4;
+}
+
+song test_song
+{
+  play drum_track: start, intro_synth, 2 drum_verse, 2 drum_verse, drum_chorus;
+
+  melody chords: 2 phrase_blank, 3 synth, synth_verse, verse, verse,
+    chorus;
+}
+
