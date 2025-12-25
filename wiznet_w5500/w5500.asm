@@ -160,11 +160,13 @@ delay_loop:
   ret
 
 send_reset:
+  ;; Set SW reset flag in control register 0.
   mov.w #w5500_sw_reset, r14
   mov.w #w5500_sw_reset_end - w5500_sw_reset, r13
   call #spi_send_block
   mov.w #0, r8
 send_reset_loop:
+  ;; Wait for reset flag to go low.
   inc.w r8
   mov.w #0x0000, r14
   mov.w #0, r13
@@ -325,13 +327,15 @@ spi_send_char_wait:
   ret
 
 w5500_sw_reset:
+  ;; Address 0x0000.
+  ;; Control Byte: Common register 00000, W 1, OpMode 00
   .db 0x00, 0x00, 0x04
 mr_reset:
   .db 0x80
 w5500_sw_reset_end:
 
 w5500_common_init:
-  ;; Address 0.
+  ;; Address 0x0001.
   ;; Control Byte: Common register 00000, W 1, OpMode 00
   .db 0x00, 0x01, 0x04
 gateway_address:
@@ -371,7 +375,7 @@ phy_config_enable:
 w5500_phy_enable_end:
 
 w5500_socket_0_interrupt_mask:
-  ;; Address 0.
+  ;; Address 0x002c.
   ;; Control Byte: Socket 0 register 00010, W 1, OpMode 00
   .db 0x00, 0x2c, 0x0c
 interrupt_mask_0:
@@ -379,7 +383,7 @@ interrupt_mask_0:
 w5500_socket_0_interrupt_mask_end:
 
 w5500_socket_0_udp:
-  ;; Address 0.
+  ;; Address 0x0000.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x00, 0x0c
 socket_mode_udp:
@@ -388,7 +392,7 @@ socket_mode_udp:
 w5500_socket_0_udp_end:
 
 w5500_socket_0_dst:
-  ;; Address 0.
+  ;; Address 0x000c.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x0c, 0x0c
 destination_address:
@@ -398,7 +402,7 @@ destination_port:
 w5500_socket_0_dst_end:
 
 w5500_socket_0_src:
-  ;; Address 0.
+  ;; Address 0x0004.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x04, 0x0c
 source_port:
@@ -406,7 +410,7 @@ source_port:
 w5500_socket_0_src_end:
 
 w5500_socket_0_open:
-  ;; Address 0.
+  ;; Address 0x0001.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x01, 0x0c
 command_open:
@@ -415,7 +419,7 @@ command_open:
 w5500_socket_0_open_end:
 
 w5500_socket_0_connect:
-  ;; Address 0.
+  ;; Address 0x0001.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x01, 0x0c
 command_connect:
@@ -424,7 +428,7 @@ command_connect:
 w5500_socket_0_connect_end:
 
 w5500_socket_0_close:
-  ;; Address 0.
+  ;; Address 0x0001.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x01, 0x0c
 command_close:
@@ -433,7 +437,7 @@ command_close:
 w5500_socket_0_close_end:
 
 w5500_socket_0_tx_size:
-  ;; Address 0.
+  ;; Address 0x001f.
   ;; Control Byte: Socket 0 register 00010, W 1, OpMode 00
   .db 0x00, 0x1f, 0x0c
 tx_size:
@@ -442,7 +446,7 @@ tx_size:
 w5500_socket_0_tx_size_end:
 
 w5500_socket_0_tx_data:
-  ;; Address 0.
+  ;; Address 0x0000.
   ;; Control Byte: Socket 0 register 00010, W 1, OpMode 00
   .db 0x00, 0x00, 0x14
 tx_data:
@@ -450,7 +454,7 @@ tx_data:
 w5500_socket_0_tx_data_end:
 
 w5500_socket_0_tx_len:
-  ;; Address 0.
+  ;; Address 0x0024.
   ;; Control Byte: Socket 0 register 00010, W 1, OpMode 00
   .db 0x00, 0x24, 0x0c
 tx_len:
@@ -458,7 +462,7 @@ tx_len:
 w5500_socket_0_tx_len_end:
 
 w5500_socket_0_send:
-  ;; Address 0.
+  ;; Address 0x0001.
   ;; Control Byte: Socket 0 register 00001, W 1, OpMode 00
   .db 0x00, 0x01, 0x0c
 send_command:
